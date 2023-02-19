@@ -1,0 +1,40 @@
+Departure Delay in Minutes,Arrival Delay in Minutes,Inflight wifi service,Departure/Arrival time convenient,Ease of Online booking,Gate location,Food and drink,Online boarding,Seat comfort,Inflight entertainment,On-board service,Leg room service,Baggage handling,Checkin service,Inflight service,Cleanliness,Gender,Customer Type,Age,Type of Travel,Class,Flight Distance,satisfaction
+0.0,0.0,2.0,5.0,2.0,4.0,2.0,5.0,2.0,5.0,3.0,4.0,4.0,2.0,3.0,2.0,Female,Loyal Customer,25,Personal Travel,Eco,4963,neutral or dissatisfied
+3.0,0.0,3.6,5.0,3.6,2.0,2.8,5.0,1.0,3.0,2.0,4.0,3.0,1.0,5.0,1.0,Female,Loyal Customer,63,Personal Travel,Business,4983,satisfied
+0.0,13.0,1.0,1.0,1.0,1.0,2.0,1.0,1.0,3.0,3.0,5.0,4.0,1.0,3.0,1.0,Female,Loyal Customer,45,Business travel,Business,4963,satisfied
+18.0,0.0,4.0,3.0,3.0,3.0,4.0,4.0,4.0,3.0,2.0,5.0,2.0,4.0,1.0,4.0,Female,Loyal Customer,31,Business travel,Eco,4983,satisfied
+17.0,14.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,4.0,1.0,3.0,2.0,3.0,2.0,Female,Loyal Customer,42,Business travel,Eco Plus,4817,neutral or dissatisfied
+0.0,0.0,5.0,4.0,5.0,5.0,5.0,1.0,5.0,3.0,2.0,4.0,3.0,5.0,5.0,5.0,Female,Loyal Customer,50,Business travel,Business,4983,satisfied
+12.0,0.0,1.0,1.0,1.0,1.0,4.0,4.0,4.0,3.0,4.0,5.0,5.0,4.0,3.0,4.0,Female,Loyal Customer,57,Business travel,Business,4963,satisfied
+6.0,0.0,2.0,4.0,2.0,5.0,2.0,4.0,4.0,2.0,2.0,4.0,4.0,4.0,3.0,4.0,Female,Loyal Customer,29,Personal Travel,Eco,4983,neutral or dissatisfied
+4.0,26.0,2.0,4.0,2.0,2.0,2.0,4.0,4.0,5.0,3.0,4.0,4.0,4.0,4.0,4.0,Male,Loyal Customer,10,Personal Travel,Eco,4817,neutral or dissatisfied
+0.0,0.0,4.0,2.0,4.0,2.0,4.0,5.0,5.0,4.0,2.0,1.0,1.0,5.0,1.0,5.0,Male,Loyal Customer,15,Personal Travel,Eco,4502,satisfied
+0.0,0.0,2.0,3.0,3.0,3.0,2.0,2.0,2.0,1.0,1.0,3.0,2.0,2.0,3.0,2.0,Male,Loyal Customer,61,Business travel,Eco,4502,neutral or dissatisfied
+0.0,0.0,4.0,4.0,4.0,4.0,5.0,5.0,5.0,3.0,3.0,3.0,5.0,5.0,3.0,5.0,Female,Loyal Customer,42,Business travel,Business,4502,satisfied
+12.0,17.0,3.0,4.0,3.0,5.0,3.0,3.0,3.0,3.0,1.0,5.0,1.0,3.0,3.0,3.0,Female,Loyal Customer,57,Personal Travel,Eco,4963,neutral or dissatisfied
+0.0,32.0,1.0,1.0,1.0,3.0,1.0,3.0,3.0,1.0,2.0,2.0,2.0,3.0,2.0,3.0,Male,Loyal Customer,35,Personal Travel,Eco,4502,neutral or dissatisfied
+0.0,0.0,3.0,3.0,3.0,3.0,5.0,4.0,4.0,4.0,5.0,4.0,3.0,4.0,2.0,4.0,Male,Loyal Customer,42,Business travel,Business,4983,satisfied
+0.0,20.0,3.0,3.0,2.0,3.0,4.0,4.0,4.0,4.0,5.0,5.0,5.0,4.0,4.0,4.0,Female,Loyal Customer,47,Business travel,Business,4502,satisfied
+1.0,25.0,2.0,2.0,2.0,5.0,2.0,1.0,1.0,3.0,3.0,4.0,5.0,1.0,4.0,1.0,Male,disloyal Customer,42,Business travel,Business,4963,neutral or dissatisfied
+9.0,0.0,3.0,2.0,2.0,1.0,3.0,1.0,1.0,2.0,5.0,5.0,3.0,1.0,5.0,1.0,Female,disloyal Customer,33,Business travel,Eco,4817,neutral or dissatisfied
+16.0,0.0,3.0,5.0,5.0,5.0,3.0,3.0,3.0,3.0,3.0,3.0,5.0,3.0,2.0,3.0,Female,Loyal Customer,52,Business travel,Business,4983,satisfied
+0.0,0.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,2.0,2.0,4.0,4.0,4.0,3.0,4.0,Female,Loyal Customer,50,Business travel,Business,4983,satisfied
+2.0,5.0,2.0,2.0,2.0,3.0,2.0,5.0,5.0,4.0,1.0,3.0,3.0,5.0,2.0,5.0,Female,Loyal Customer,54,Personal Travel,Business,4963,neutral or dissatisfied
+32.0,30.0,3.0,1.0,3.0,3.0,3.0,2.0,2.0,2.0,4.0,4.0,4.0,2.0,1.0,2.0,Male,Loyal Customer,14,Personal Travel,Eco,4502,neutral or dissatisfied
+0.0,0.0,5.0,5.0,5.0,4.0,5.0,1.0,1.0,1.0,3.0,5.0,5.0,1.0,3.0,1.0,Male,Loyal Customer,67,Personal Travel,Eco Plus,4983,satisfied
+0.0,2.0,2.0,1.0,2.0,4.0,2.0,3.0,3.0,2.0,5.0,4.0,3.0,3.0,4.0,3.0,Male,Loyal Customer,27,Personal Travel,Eco,4963,neutral or dissatisfied
+0.0,0.0,2.4,4.4,3.0,3.0,2.6,5.0,2.0,5.0,2.0,4.0,5.0,2.0,3.0,2.0,Female,disloyal Customer,27,Business travel,Business,4963,satisfied
+0.0,2.0,2.0,3.0,2.0,2.0,4.0,4.0,4.0,3.0,1.0,5.0,1.0,4.0,3.0,4.0,Female,Loyal Customer,37,Business travel,Business,4983,satisfied
+2.0,0.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,3.0,4.0,3.0,5.0,4.0,5.0,4.0,Male,Loyal Customer,38,Business travel,Eco Plus,4983,satisfied
+0.0,0.0,1.0,3.0,1.0,4.0,1.0,3.0,3.0,3.0,3.0,3.0,5.0,3.0,2.0,3.0,Female,Loyal Customer,47,Personal Travel,Eco,4983,neutral or dissatisfied
+0.0,0.0,4.0,4.0,3.0,1.0,3.0,1.0,1.0,4.0,1.0,4.0,5.0,1.0,3.0,1.0,Male,Loyal Customer,26,Personal Travel,Eco,4963,satisfied
+0.0,0.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,2.0,4.0,3.0,1.0,3.0,1.0,Male,Loyal Customer,30,Business travel,Eco,4963,neutral or dissatisfied
+45.0,16.0,3.0,5.0,3.0,5.0,3.0,1.0,4.0,4.0,4.0,3.0,4.0,4.0,4.0,4.0,Female,Loyal Customer,52,Personal Travel,Eco,4817,neutral or dissatisfied
+20.0,0.0,2.0,2.0,2.0,2.0,5.0,5.0,5.0,5.0,3.0,4.0,5.0,5.0,3.0,5.0,Male,Loyal Customer,49,Business travel,Business,4817,satisfied
+0.0,0.0,3.0,2.0,3.0,3.0,3.0,4.0,4.0,2.0,1.0,3.0,4.0,4.0,1.0,4.0,Female,Loyal Customer,62,Personal Travel,Eco Plus,4983,neutral or dissatisfied
+6.0,2.0,4.0,2.0,5.0,4.0,5.0,3.0,3.0,2.0,3.0,4.0,4.0,3.0,3.0,3.0,Male,Loyal Customer,10,Personal Travel,Business,4502,neutral or dissatisfied
+0.0,0.0,3.0,3.0,5.0,3.0,5.0,5.0,5.0,3.0,3.0,5.0,4.0,5.0,3.0,5.0,Female,Loyal Customer,56,Business travel,Business,4502,satisfied
+3.0,0.0,2.8,5.0,2.4,1.0,2.8,1.0,1.0,3.0,4.0,5.0,5.0,1.0,3.0,1.0,Female,Loyal Customer,13,Personal Travel,Eco,4963,satisfied
+4.0,4.0,5.0,5.0,5.0,5.0,2.0,2.0,2.0,4.0,4.0,4.0,5.0,2.0,5.0,2.0,Male,Loyal Customer,42,Business travel,Business,4502,satisfied
+28.0,0.0,2.0,2.0,2.0,3.0,2.0,4.0,4.0,2.0,1.0,5.0,4.0,4.0,4.0,4.0,Male,Loyal Customer,60,Personal Travel,Eco,4502,neutral or dissatisfied
+60.0,39.0,4.0,4.0,5.0,4.0,4.0,4.0,4.0,3.0,4.0,3.0,5.0,4.0,5.0,4.0,Male,Loyal Customer,43,Business travel,Business,4963,satisfied
