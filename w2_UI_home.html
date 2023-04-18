@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>xxxxx</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="w2_UI_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="script.js" charset="utf-8"></script>
+    <script src="w2_UI_script.js" charset="utf-8"></script>
   </head>
   <body>
 
   <style>
     .section-home {
-      background-image: url('cover.jpg');
+      background-image: url('w2_cover.jpg');
     }
   </style>
 
@@ -74,14 +74,22 @@
     <section class="section-two">
       <h2>xxxxx</h2>
       <form id="myForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
+
+        <label for="satisfaction">Satisfaction:</label>
+        <input type="text" id="satisfaction" name="satisfaction" required>
+
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" required>
+
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" name="gender" required>
       
         <button type="submit" onclick="submitForm()">Submit</button>
       </form>
+
+      <p id = 'sub_count'></p>
       
       <button onclick="downloadFile()">Export</button>
     
@@ -91,6 +99,7 @@
     <script>
       // Declare the global variable
       var test1 = '[';
+      var count = 0;
     
       function submitForm() {
         var form = document.getElementById('myForm');
@@ -111,6 +120,10 @@
         
         // Clear the form
         form.reset();
+
+        count += 1;
+        var element = document.getElementById("sub_count");
+        element.innerHTML = 'Submission count: ' + count;
       }
       
       function downloadFile() {
