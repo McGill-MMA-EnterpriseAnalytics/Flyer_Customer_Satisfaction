@@ -1,7 +1,6 @@
 import uvicorn
 from typing import Union
 from fastapi import FastAPI, APIRouter, Query, Response
-from model_lib.preprocessor import ModelProcessor as mp
 import src.app.controller.controller as c
 import requests
 import pandas as pd
@@ -12,7 +11,7 @@ import logging
 logger = logging.getLogger(__name__)
 app = FastAPI() #openapi_url="/openapi.json"
 
-mp
+
 api_router = APIRouter()
 api_router.include_router(c.api_router, prefix="/processor/controller", tags=[],include_in_schema=True)
 app.include_router(api_router, prefix="/api")
