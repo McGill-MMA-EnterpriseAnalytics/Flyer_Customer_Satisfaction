@@ -76,7 +76,7 @@ class ModelProcessor:
         if save_result:
             if use_api:
                 #url = f"https://localhost:5001/api/model/ModelDataProcessed/SaveTaskDurationResult?deleteExisting=False&runDate={runDate}"
-		    url = ""
+                url = ""
                 dcp.save_results(request_url=url, result=y_pred)
             else:
                 y_pred.to_csv(file_path + "pip_prediction_result.csv")
