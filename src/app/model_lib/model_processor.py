@@ -1,6 +1,6 @@
 import pandas as pd
 from src.app.model_lib.data_extract_processor import DataExtractProcessor as dcp
-from src.app.model_lib.preprocessor import  DataProcessor as dp
+from src.app.model_lib.preprocessor import DataProcessor as dp
 import xgboost as xgb
 from xgboost import cv, XGBClassifier
 from sklearn.preprocessing import LabelEncoder
@@ -75,8 +75,7 @@ class ModelProcessor:
 
         if save_result:
             if use_api:
-                #url = f"https://localhost:5001/api/model/ModelDataProcessed/SaveTaskDurationResult?deleteExisting=False&runDate={runDate}"
-                url = ""
+                url = f"https://localhost:5001/api/model/ModelDataProcessed/SaveTaskDurationResult?deleteExisting=False&runDate={runDate}"
                 dcp.save_results(request_url=url, result=y_pred)
             else:
                 y_pred.to_csv(file_path + "pip_prediction_result.csv")
