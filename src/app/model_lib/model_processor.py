@@ -5,6 +5,7 @@ import xgboost as xgb
 from xgboost import cv, XGBClassifier
 from sklearn.preprocessing import LabelEncoder
 import joblib
+from datetime import datetime
 
 
 class ModelProcessor:
@@ -72,10 +73,12 @@ class ModelProcessor:
         X_test = dp.prep_inference_data(infer_data_df)
 
         y_pred = xgb_clf.predict(X_test)
+        dateFormat = "%Y-%m-%dT%H:%M:%S"
+        runDate = datetime.now().strftime(dateFormat)
 
         if save_result:
             if use_api:
-                url = f"https://localhost:5001/api/model/ModelDataProcessed/SaveTaskDurationResult?deleteExisting=False&runDate={runDate}"
+                url = f"https://localhost:7118/api/model/ModelDataProcessed/SavePredictions?deleteExisting=False&runDate={runDate}"
                 dcp.save_results(request_url=url, result=y_pred)
             else:
                 y_pred.to_csv(file_path + "pip_prediction_result.csv")
