@@ -1,0 +1,19 @@
+﻿body {
+}
+
+
+.table100.ver1 th {
+    font-family: Lato-Bold;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.4;
+    background-color: #6c7ae0;
+}
+
+
+div {
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}
