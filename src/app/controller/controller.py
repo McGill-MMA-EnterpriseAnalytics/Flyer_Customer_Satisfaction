@@ -11,6 +11,7 @@ import logging
 import json
 from pydantic import parse_obj_as
 from fastapi.encoders import jsonable_encoder
+from datetime import datetime
 
 
 class input_model(BaseModel):
@@ -109,15 +110,87 @@ def process_clean_data():
         "DataDate": "DataDate",
     }
 
+    payloadColnameMap = {
+        "Departure Delay in Minutes": "DepartDelay",
+        "Arrival Delay in Minutes": "ArriveDelay",
+        "Customer Type_Loyal Customer": "CustomerType_Loyal",
+        "Customer Type_disloyal Customer": "CustomerType_Disloyal",
+        "Gender_Female": "Gender_Female",
+        "Gender_Male": "Gender_Male",
+        "Type of Travel_Business travel": "TravelType_Business",
+        "Inflight wifi service": "InflightWifi",
+        "Departure/Arrival time convenient": "DeptArriveConvenience",
+        "Ease of Online booking": "OnlineBooking",
+        "Gate location": "GateLocation",
+        "Food and drink": "Food",
+        "Online boarding": "OnlineBoarding",
+        "Seat comfort": "SeatComfort",
+        "Inflight entertainment": "InflightEntertainment",
+        "On-board service": "OnboardService",
+        "Leg room service": "LegRoom",
+        "Baggage handling": "Baggage",
+        "Checkin service": "Checkin",
+        "Inflight service": "InflightService",
+        "Cleanliness": "Cleanliness",
+        "AirlineDataID": "AirlineDataID",
+        "Flight Distance": "Distance",
+        "Age": "Age",
+        "satisfaction": "Satisfaction",
+        "DataDate": "DataDate",
+        "IsTrain": "IsTrain"
+    }
+
+    columnTypeMap = {
+        "Gender_Female": int,
+        "Gender_Male": int,
+        "CustomerType_Loyal": int,
+        "CustomerType_Disloyal": int,
+        "Age": int,
+        "Distance": int,
+        "InflightWifi": int,
+        "DeptArriveConvenience": int,
+        "OnlineBooking": int,
+        "GateLocation": int,
+        "Food": int,
+        "OnlineBoarding": int,
+        "SeatComfort": int,
+        "InflightEntertainment": int,
+        "OnboardService": int,
+        "LegRoom": int,
+        "Baggage": int,
+        "Checkin": int,
+        "InflightService": int,
+        "Cleanliness": int,
+        "DepartDelay": int,
+        "ArriveDelay": int,
+        "Satisfaction": str,
+        "DataDate": str,
+        "TravelType_Business": int,
+        "Class_Business" : int
+    }
+
     train_url = "https://localhost:7118/api/etl/AirlineData/GetAirlineData?isTrain=true"
     train_data_df = dcp.get_training_data(train_url)
     train_data_df = train_data_df.rename(columns=columnNameMap)
     train_norm, train_imp = d_proc.clean_data(train_data_df, is_train=True)
 
+    dateFormat = "%Y-%m-%dT%H:%M:%S"
+    runDate = datetime.now().strftime(dateFormat)
+
+
+    '''dcp.save_results(
+        f"https://localhost:7118/api/etl/ModelData/SaveCleanModelInput?deleteExisting=true&rundate={runDate}",
+        train_imp.rename(columns=payloadColnameMap).astype(columnTypeMap))
+    '''
     test_url = "https://localhost:7118/api/etl/AirlineData/GetAirlineData?isTrain=false"
     test_data_df = dcp.get_training_data(test_url)
     test_data_df = test_data_df.rename(columns=columnNameMap)
     test_norm, test_imp = d_proc.clean_data(test_data_df, is_train=False)
+
+    data = pd.concat([train_imp, test_imp], ignore_index=True)
+    dcp.save_results(
+        f"https://localhost:7118/api/etl/ModelData/SaveCleanModelInput?deleteExisting=true&rundate={runDate}",
+        data.rename(columns=payloadColnameMap).astype(columnTypeMap))
 
     return "Ok"
     # seq_pc.SequenceProcessor.save_results(results)

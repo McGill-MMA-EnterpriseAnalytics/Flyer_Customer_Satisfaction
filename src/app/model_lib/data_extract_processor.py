@@ -4,6 +4,7 @@ from http import HTTPStatus as req_status
 import json
 from json import JSONEncoder
 import datetime
+import math
 
 
 class DateTimeEncoder(JSONEncoder):
@@ -38,10 +39,18 @@ class DataExtractProcessor:
 
     @staticmethod
     def save_results(request_url: str, result, params: dict = None):
-        if isinstance(result, pd.DataFrame):
-            result = json.loads(result.to_json(orient="records"))
-
-        response = requests.post(url=request_url, params=params, json=result, verify=False)
+        start = 0
+        end = 0
+        batch_size = 1000
+        for batch_num in range(0, int(math.ceil(len(result) / batch_size))):
+            start = end
+            end = start + batch_size
+            data = result.iloc[start:end]
+            if isinstance(data, pd.DataFrame):
+                data_payload = json.loads(data.to_json(orient="records"))
+            else:
+                data_payload = data
+            response = requests.post(url=request_url, params=params, json=data_payload, verify=False)
 
         if response.status_code == req_status.OK:
             print("ok")

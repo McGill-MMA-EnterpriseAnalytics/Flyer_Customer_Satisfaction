@@ -2,9 +2,10 @@ using System.Data;
 using EnterpriseWebApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using EnterpriseWebApp.Models.ETL;
+using Import = EnterpriseWebApp.Models.Import;
 using Extract = EnterpriseWebApp.Models.Extract;
 
-namespace EnterpriseWebApp.Controllers.ETL
+namespace EnterpriseWebApp.Controllers
 {
     [ApiController]
     [Route("api/etl/[controller]")]
@@ -40,46 +41,5 @@ namespace EnterpriseWebApp.Controllers.ETL
             return _dbContext.AirlineData.Where(r => r.IsTrain == isTrain)?.Select(Extract.ExtractAirlineData.Map).Take(5);
         }
 
-        //[HttpPost("AddCauseCode")]
-        //public ActionResult AddCauseCode(IEnumerable<Import.ImportCauseCode> causeCodes)
-        //{
-
-        //    Func<CauseCode, Import.ImportCauseCode, bool> finder = (existingItem, importItem) =>
-        //    {
-        //        return existingItem.CauseCodeName == importItem.CauseCodeName;
-        //    };
-
-        //    Func<Import.ImportCauseCode, CauseCode, CauseCode> transformer = (importItem, extistingItem) =>
-        //    {
-        //        if (extistingItem is null)
-        //        {
-        //            return new CauseCode
-        //            {
-        //                CauseCodeId = 0,
-        //                CauseCodeName = importItem.CauseCodeName,
-        //                CauseText = importItem.CauseText,
-        //            };
-        //        }
-        //        else
-        //        {
-        //            return new CauseCode
-        //            {
-        //                CauseCodeId = extistingItem.CauseCodeId,
-        //                CauseCodeName = importItem.CauseCodeName,
-        //                CauseText = importItem.CauseText,
-        //            };
-        //        }
-        //    };
-
-        //    var result = EntityUtil.AddEntity(_dbContext, _dbContext.CauseCodes, causeCodes, finder, transformer, true);
-
-        //    return result switch
-        //    {
-        //        Result r when r.GetType().IsAssignableFrom(typeof(Result.Ok<bool>)) => Ok(),
-        //        Result r when r.GetType().IsAssignableFrom(typeof(Result.Ok<int>)) => Ok(r),
-        //        Result.Error error => Ok(error),
-        //        _ => throw new NotImplementedException(),
-        //    };
-        //}
     }
 }
