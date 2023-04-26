@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xxxxx</title>
+    <title>Satisfaction Survey</title>
     <link rel="stylesheet" href="w2_UI_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="w2_UI_script.js" charset="utf-8"></script>
@@ -17,7 +17,7 @@
   </style>
 
 <header>
-  <a href="#" class="logo">xxxxx</a>
+  <a href="#" class="logo">Flyer Satisfaction</a>
   <div class="navigation">
     <ul class="menu">
       <div class="close-btn"></div>
@@ -70,38 +70,43 @@
   <div class="menu-btn"></div>
 </header>
     <section class="section-home">
-      <h1>xxxxx</h1>
+      <h1>Satisfaction Survey</h1>
     </section>
     <section class="section-two">
-      <h2>xxxxx</h2>
-      <form id="myForm">
-        <label for="Email">Email:</label>
-        <input type="Email" id="Email" name="Email" required>
+      <p>
+        Thank you for flying with us and taking your time to fill this survey!<br>
+        We always welcome any feedback that help us improve our offerings and give you an even better flying experience.<br>
+        Please leave us your email if you'd like a receipt of your answers or to earn loyalty points.
+      </p>
 
-        <label for="Gender">Gender:</label>
+      <form id="myForm">
+        <label for="Email">Email:</label><br>
+        <input type="Email" id="Email" name="Email">
+        <br>
+        <label for="Gender">Gender:</label><br>
         <select id="Gender" name="Gender">
           <option value="">--Select--</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
-
-        <label for="Age">Age:</label>
-        <input type="text" id="Age" name="Age" required>
-
-        <label for="Type of Travel">Type of Travel:</label>
+        <br>
+        <label for="Age">Age:</label><br>
+        <input type="text" id="Age" name="Age">
+        <br>
+        <label for="Type of Travel">Type of Travel:</label><br>
         <select id="Type of Travel" name="Type of Travel">
           <option value="">--Select--</option>
           <option value="Personal">Personal</option>
           <option value="Business">Business</option>
         </select>
-
-        <label for="satisfaction">Overall Satisfaction:</label>
+        <br>
+        <label for="satisfaction">Overall Satisfaction:</label><br>
         <select id="satisfaction" name="satisfaction">
           <option value="">--Select--</option>
           <option value="satisfied">satisfied</option>
           <option value="neutral or dissatisfied">neutral or dissatisfied	</option>
         </select>
-
+        <br>
         <label for="Inflight wifi service">Wifi Service:</label>
         <div class="scale">
           <input type="radio" id="Inflight wifi service1" name="Inflight wifi service" value="1">
@@ -115,7 +120,7 @@
           <input type="radio" id="Inflight wifi service5" name="Inflight wifi service" value="5">
           <label for="Inflight wifi service5"></label>
         </div>
-
+        
         <label for="Departure/Arrival time convenient">Time Convenience:</label>
         <div class="scale">
           <input type="radio" id="Departure/Arrival time convenient1" name="Departure/Arrival time convenient" value="1">
@@ -301,11 +306,7 @@
         <button type="submit" onclick="submitForm()">Submit</button>
       </form>
 
-      <p id = 'sub_count'></p>
-      
-      <button onclick="downloadFile()">Export</button>
-    
-      <a id="download_link" download="my_exported_file.json" style="display:none">Download</a>    
+      <p id = 'confirmation'></p>
     </section>
 
     <script>
@@ -314,43 +315,38 @@
       var count = 0;
     
       function submitForm() {
-        var form = document.getElementById('myForm');
+        const form = document.getElementById('myForm');
     
-        var formData = new FormData(form);
-        var jsonObject = {};
+        form.addEventListener('submit', (event) => {
+        event.preventDefault();
     
-        for (var [key, value] of formData.entries()) {
-          jsonObject[key] = value;
+        const formData = new FormData(form);
+    
+        const jsonObject = {};
+    
+        for (const [key, value] of formData.entries()) {
+            jsonObject[key] = value;
         }
     
-        var json = JSON.stringify(jsonObject);
-        
-        // Assign the value to the global variable
-        test1 += json;
-        test1 += ', \n'
-        console.log(test1);
-        
-        // Clear the form
-        form.reset();
+        console.log(jsonObject);
 
-        count += 1;
-        var element = document.getElementById("sub_count");
-        element.innerHTML = 'Submission count: ' + count;
-      }
-      
-      function downloadFile() {
-        // Strip the last comma and add the closing bracket
-        test1 = test1.slice(0, -3);
-        test1 += ']';
-        
-        // Update the download link
-        var downloadLink = document.getElementById('download_link');
-        var blob = new Blob([test1], { type: 'text/plain' });
-        var url = URL.createObjectURL(blob);
-    
-        downloadLink.href = url;
-        downloadLink.style.display = 'block';
-      }
+        var element = document.getElementById("confirmation");
+        element.innerHTML = 'Thank you for your feedback!';
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:8000/endpoint", true);
+        xhr.setRequestHeader("Content-type", "application/json");
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log("JSON object sent successfully!");
+            }
+        };
+
+        xhr.send(jsonObject);
+
+        });
+    }
   </script>
   </body>
 
