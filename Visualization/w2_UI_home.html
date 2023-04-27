@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xxxxx</title>
+    <link rel="stylesheet" href="w2_UI_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="w2_UI_script.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+  <style>
+    .section-home {
+      background-image: url('w2_cover.jpg');
+    }
+  </style>
+
+<header>
+  <a href="#" class="logo">xxxxx</a>
+  <div class="navigation">
+    <ul class="menu">
+      <div class="close-btn"></div>
+
+      <li class="menu-item"><a href="w2_UI_home.html">Home</a></li>
+      <li class="menu-item"><a href="w2_UI_input.html">Input</a></li>
+
+      <li class="menu-item">
+        <a class="sub-btn" href="#">Pre-processing <i class="fas fa-angle-down"></i></a>
+        <ul class="sub-menu">
+          <li class="sub-item"><a href="w2_UI_prepro_profile.html">Train Profile</a></li>
+          <li class="sub-item"><a href="w2_UI_prepro_outlier.html">No Outlier</a></li>
+          <li class="sub-item"><a href="w2_UI_prepro_normalized.html">Normalized</a></li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <a class="sub-btn" href="#">xxxxx <i class="fas fa-angle-down"></i></a>
+        <ul class="sub-menu">
+          <li class="sub-item"><a href="xxxxx.html">xxxxx</a></li>
+          <li class="sub-item"><a href="xxxxx.html">xxxxx</a></li>
+          <li class="sub-item"><a href="xxxxx.html">xxxxx</a></li>
+          <li class="sub-item more">
+            <a class="more-btn" href="#">xxxxx <i class="fas fa-angle-right"></i></a>
+            <ul class="more-menu">
+              <li class="more-item"><a href="xxxxx.html">xxxxx</a></li>
+              <li class="more-item"><a href="xxxxx.html">xxxxx</a></li>
+              <li class="more-item"><a href="xxxxx.html">xxxxx</a></li>
+              <li class="more-item"><a href="xxxxx.html">xxxxx TV</a></li>
+              <li class="more-item"><a href="xxxxx.html">xxxxx</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li class="menu-item">
+        <a class="sub-btn" href="#">xxxxx <i class="fas fa-angle-down"></i></a>
+        <ul class="sub-menu">
+          <li class="sub-item"><a href="xxxxx.html">xxxxx</a></li>
+          <li class="sub-item"><a href="xxxxx.html">xxxxx</a></li>
+          <li class="sub-item"><a href="xxxxx.html">xxxxx</a></li>
+          <li class="sub-item"><a href="xxxxx.html">xxxxx</a></li>
+          <li class="sub-item"><a href="xxxxx.html">xxxxx</a></li>
+        </ul>
+      </li>
+
+      <li class="menu-item"><a href="xxxxx.html">xxxxx</a></li>
+    </ul>
+  </div>
+  <div class="menu-btn"></div>
+</header>
+    <section class="section-home">
+      <h1>xxxxx</h1>
+    </section>
+    <section class="section-two">
+      <h2>xxxxx</h2>
+      <form id="myForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="satisfaction">Satisfaction:</label>
+        <input type="text" id="satisfaction" name="satisfaction" required>
+
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" required>
+
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" name="gender" required>
+      
+        <button type="submit" onclick="submitForm()">Submit</button>
+      </form>
+
+      <p id = 'sub_count'></p>
+      
+      <button onclick="downloadFile()">Export</button>
+    
+      <a id="download_link" download="my_exported_file.json" style="display:none">Download</a>    
+    </section>
+
+    <script>
+      // Declare the global variable
+      var test1 = '[';
+      var count = 0;
+    
+      function submitForm() {
+        var form = document.getElementById('myForm');
+    
+        var formData = new FormData(form);
+        var jsonObject = {};
+    
+        for (var [key, value] of formData.entries()) {
+          jsonObject[key] = value;
+        }
+    
+        var json = JSON.stringify(jsonObject);
+        
+        // Assign the value to the global variable
+        test1 += json;
+        test1 += ', \n'
+        console.log(test1);
+        
+        // Clear the form
+        form.reset();
+
+        count += 1;
+        var element = document.getElementById("sub_count");
+        element.innerHTML = 'Submission count: ' + count;
+      }
+      
+      function downloadFile() {
+        // Strip the last comma and add the closing bracket
+        test1 = test1.slice(0, -3);
+        test1 += ']';
+        
+        // Update the download link
+        var downloadLink = document.getElementById('download_link');
+        var blob = new Blob([test1], { type: 'text/plain' });
+        var url = URL.createObjectURL(blob);
+    
+        downloadLink.href = url;
+        downloadLink.style.display = 'block';
+      }
+  </script>
+  </body>
+
+</html>
