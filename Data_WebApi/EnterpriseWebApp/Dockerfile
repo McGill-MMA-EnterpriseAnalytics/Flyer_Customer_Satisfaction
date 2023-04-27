@@ -8,7 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /code
 
-COPY ./Data_WebApi/EnterpriseWebApp /code/EnterpriseWebApp
+COPY ./EnterpriseWebApp /code/EnterpriseWebApp
 
 
 RUN dotnet restore "/code/EnterpriseWebApp/EnterpriseWebApp.csproj"
