@@ -10,7 +10,6 @@ WORKDIR /code
 
 COPY ./EnterpriseWebApp /code/EnterpriseWebApp
 
-
 RUN dotnet restore "/code/EnterpriseWebApp/EnterpriseWebApp.csproj"
 COPY . .
 WORKDIR "/code/EnterpriseWebApp"
