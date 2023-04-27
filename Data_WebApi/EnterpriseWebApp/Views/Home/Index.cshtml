@@ -1,0 +1,17 @@
+﻿@Model System.Collections.Generic.KeyValuePair<string,string>
+	<head>
+		<title>PWC Layout Processing</title>
+	</head>
+	<body>
+		<h1>PWC Layout Processing</h1>
+		<ul>
+			@foreach (var item in Model)
+			{
+				<hr />
+				<li>
+					<a href="@item.Value">@item.Key</a>
+				</li>
+				<br />
+			}
+		</ul>
+	</body>
