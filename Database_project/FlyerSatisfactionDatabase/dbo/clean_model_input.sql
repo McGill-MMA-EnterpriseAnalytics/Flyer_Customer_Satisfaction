@@ -1,0 +1,37 @@
+﻿CREATE TABLE [dbo].[clean_model_input]
+(
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[AirlineDataID] [int] NULL,
+	[Gender_Female] [int] NOT NULL DEFAULT 0,
+	[Gender_Male] [int] NOT NULL DEFAULT 1,
+	[CustomerType_Disloyal] [int] NOT NULL DEFAULT 1,
+	[CustomerType_Loyal] [int] NOT NULL DEFAULT 0,
+	[Age] [int] NULL DEFAULT 0,
+	[TravelType_Business] [int] NOT  NULL DEFAULT 0,
+	[Class_Business] [int] NOT NULL DEFAULT 0,
+	[TravelType_Personal] [int] NOT NULL DEFAULT 1,
+	[Class_Eco] [int] NOT NULL DEFAULT 1,
+	[Distance] [int] NOT NULL DEFAULT 0,
+	[InflightWifi] [int] NOT NULL DEFAULT 1,
+	[DeptArriveConvenience] [int] NOT NULL DEFAULT 1,
+	[OnlineBooking] [int] NOT NULL DEFAULT 1,
+	[GateLocation] [int] NOT NULL DEFAULT 1,
+	[Food] [int] NOT NULL DEFAULT 1,
+	[OnlineBoarding] [int] NOT NULL DEFAULT 1,
+	[SeatComfort] [int] NOT NULL DEFAULT 1,
+	[InflightEntertainment] [int] NOT NULL DEFAULT 1,
+	[OnboardService] [int] NOT NULL DEFAULT 1,
+	[LegRoom] [int] NOT NULL DEFAULT 1,
+	[Baggage] [int] NOT NULL DEFAULT 1,
+	[Checkin] [int] NOT NULL DEFAULT 1,
+	[InflightService] [int] NOT NULL DEFAULT 1,
+	[Cleanliness] [int] NOT NULL DEFAULT 1,
+	[DepartDelay] [int] NOT NULL DEFAULT 1,
+	[ArriveDelay] [int] NOT NULL DEFAULT 1,
+	[Satisfaction] [varchar](50) NOT NULL DEFAULT ('neutral or dissatisfied') ,
+	[DataDate] [date] NOT NULL DEFAULT getdate(),
+	[IsTrain] [int] NOT NULL DEFAULT 0,
+	[RunDate] [datetime] NOT NULL DEFAULT current_timestamp
+
+	CONSTRAINT PK_model_input PRIMARY KEY(ID)
+)

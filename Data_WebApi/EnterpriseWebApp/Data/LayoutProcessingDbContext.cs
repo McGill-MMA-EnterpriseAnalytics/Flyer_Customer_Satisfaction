@@ -75,7 +75,9 @@ namespace EnterpriseWebApp.Data
                 entity.Property(e => e.CustomerType_Loyal).HasColumnName("CustomerType_Loyal");
                 entity.Property(e => e.Age).HasColumnName("Age");
                 entity.Property(e => e.TravelType_Business).HasColumnName("TravelType_Business");
+                entity.Property(e => e.TravelType_Personal).HasColumnName("TravelType_Personal");
                 entity.Property(e => e.Class_Business).HasColumnName("Class_Business");
+                entity.Property(e => e.Class_Eco).HasColumnName("Class_Eco");
                 entity.Property(e => e.Distance).HasColumnName("Distance");
                 entity.Property(e => e.InflightWifi).HasColumnName("InflightWifi");
                 entity.Property(e => e.DeptArriveConvenience).HasColumnName("DeptArriveConvenience");

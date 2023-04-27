@@ -23,8 +23,8 @@ class DataProcessor:
     def prep_training_data(data: pd.DataFrame):
 
         df = data[['Gender_Female', 'Customer Type_Loyal Customer',
-                 'Type of Travel_Business travel',
-                 'Type of Travel_Personal Travel', 'Class_Business',
+                 'Type of Travel_Business',
+                 'Type of Travel_Personal', 'Class_Business',
                  'Class_Eco', 'Age',
                  'Flight Distance', 'Departure Delay in Minutes',
                  'Arrival Delay in Minutes', 'Inflight wifi service',
@@ -38,8 +38,8 @@ class DataProcessor:
                  'satisfaction']]
 
         X_train = df[['Gender_Female', 'Customer Type_Loyal Customer',
-                      'Type of Travel_Business travel',
-                      'Type of Travel_Personal Travel', 'Class_Business',
+                      'Type of Travel_Business',
+                      'Type of Travel_Personal', 'Class_Business',
                       'Class_Eco', 'Age',
                       'Flight Distance', 'Departure Delay in Minutes',
                       'Arrival Delay in Minutes', 'Inflight wifi service',
@@ -57,8 +57,8 @@ class DataProcessor:
     def prep_inference_data(data: pd.DataFrame):
 
         df = data[['Gender_Female', 'Customer Type_Loyal Customer',
-                 'Type of Travel_Business travel',
-                 'Type of Travel_Personal Travel', 'Class_Business',
+                 'Type of Travel_Business',
+                 'Type of Travel_Personal', 'Class_Business',
                  'Class_Eco', 'Age',
                  'Flight Distance', 'Departure Delay in Minutes',
                  'Arrival Delay in Minutes', 'Inflight wifi service',
@@ -72,8 +72,8 @@ class DataProcessor:
                  ]]
 
         X_train = df[['Gender_Female', 'Customer Type_Loyal Customer',
-                      'Type of Travel_Business travel',
-                      'Type of Travel_Personal Travel', 'Class_Business',
+                      'Type of Travel_Business',
+                      'Type of Travel_Personal', 'Class_Business',
                       'Class_Eco', 'Age',
                       'Flight Distance', 'Departure Delay in Minutes',
                       'Arrival Delay in Minutes', 'Inflight wifi service',

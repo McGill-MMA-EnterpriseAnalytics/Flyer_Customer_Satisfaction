@@ -14,17 +14,44 @@ class ModelProcessor:
 
     @staticmethod
     def train_model(save_model = True):
-        use_api = False
+        use_api = True
         file_path ="../app/pickle/"
         data_path = "../../Data"
-        url = ""
+        url = "https://localhost:7118/api/etl/ModelData/GetModelData?isTrain=True"
 
         if use_api:
-            columnMap = {
-
+            columnNameMap = {
+                "User_id": "User_id",
+                "Gender_Female": "Gender_Female",
+                "Gender_Male": "Gender_Male",
+                "CustomerType_Loyal": "Customer Type_Loyal Customer",
+                "CustomerType_Disloyal": "Customer Type_Disloyal Customer",
+                "TravelType_Business": "Type of Travel_Business",
+                "TravelType_Personal" :"Type of Travel_Personal",
+                "Class_Business": "Class_Business",
+                "Class_Eco": "Class_Eco",
+                "Age": "Age",
+                "Distance": "Flight Distance",
+                "DepartDelay": "Departure Delay in Minutes",
+                "ArriveDelay": "Arrival Delay in Minutes",
+                "InflightWifi": "Inflight wifi service",
+                "DeptArriveConvenience": "Departure/Arrival time convenient",
+                "OnlineBooking": "Ease of Online booking",
+                "GateLocation": "Gate location",
+                "Food": "Food and drink",
+                "OnlineBoarding": "Online boarding",
+                "SeatComfort": "Seat comfort",
+                "InflightEntertainment": "Inflight entertainment",
+                "OnboardService": "On-board service",
+                "LegRoom": "Leg room service",
+                "Baggage": "Baggage handling",
+                "Checkin": "Checkin service",
+                "InflightService": "Inflight service",
+                "Cleanliness": "Cleanliness",
+                "Satisfaction": "satisfaction",
             }
             train_data_df = dcp.get_training_data(url)
-            train_data_df = train_data_df.rename(columns=columnMap)
+            train_data_df = train_data_df.rename(columns=columnNameMap)
         else:
             train_data_df = pd.read_csv(data_path + "/airplane_train_processed_date.csv")
 
@@ -56,32 +83,61 @@ class ModelProcessor:
 
     @staticmethod
     def predict_results(infer_data_df: pd.DataFrame, save_result=True):
-        use_api = False
+        use_api = True
         file_path = "../app/pickle/"
-        url = ""
+        url = "https://localhost:7118/api/etl/ModelData/GetModelData?isTrain=False"
 
         if infer_data_df is None or len(infer_data_df) <= 0:
-            columnMap = {
-
+            columnNameMap = {
+                "User_id": "User_id",
+                "Gender_Female": "Gender_Female",
+                "Gender_Male": "Gender_Male",
+                "CustomerType_Loyal": "Customer Type_Loyal Customer",
+                "CustomerType_Disloyal": "Customer Type_Disloyal Customer",
+                "TravelType_Business": "Type of Travel_Business",
+                "TravelType_Personal" :"Type of Travel_Personal",
+                "Class_Business": "Class_Business",
+                "Class_Eco": "Class_Eco",
+                "Age": "Age",
+                "Distance": "Flight Distance",
+                "DepartDelay": "Departure Delay in Minutes",
+                "ArriveDelay": "Arrival Delay in Minutes",
+                "InflightWifi": "Inflight wifi service",
+                "DeptArriveConvenience": "Departure/Arrival time convenient",
+                "OnlineBooking": "Ease of Online booking",
+                "GateLocation": "Gate location",
+                "Food": "Food and drink",
+                "OnlineBoarding": "Online boarding",
+                "SeatComfort": "Seat comfort",
+                "InflightEntertainment": "Inflight entertainment",
+                "OnboardService": "On-board service",
+                "LegRoom": "Leg room service",
+                "Baggage": "Baggage handling",
+                "Checkin": "Checkin service",
+                "InflightService": "Inflight service",
+                "Cleanliness": "Cleanliness",
+                "Satisfaction": "satisfaction",
             }
-
             infer_data_df = dcp.get_inference_data(url)
-            infer_data_df = infer_data_df.rename(columns= columnMap)
+            infer_data_df = infer_data_df.rename(columns= columnNameMap)
 
         xgb_clf = joblib.load(file_path + "final_classifier.pkl")
         le = joblib.load(file_path + "encoder.pkl")
         X_test = dp.prep_inference_data(infer_data_df)
 
         y_pred = xgb_clf.predict(X_test)
+        result = pd.DataFrame()
+        result['Data_ID'] = infer_data_df['InputID']
+        result['Satisfaction'] = y_pred
         dateFormat = "%Y-%m-%dT%H:%M:%S"
         runDate = datetime.now().strftime(dateFormat)
 
         if save_result:
             if use_api:
-                url = f"https://localhost:7118/api/model/ModelDataProcessed/SavePredictions?deleteExisting=False&runDate={runDate}"
-                dcp.save_results(request_url=url, result=y_pred)
+                url = f"https://localhost:7118/api/etl/ModelData/SavePredictionResults?deleteExisting=False&runDate={runDate}"
+                dcp.save_results(request_url=url, result=result)
             else:
-                y_pred.to_csv(file_path + "pip_prediction_result.csv")
+                result.to_csv(file_path + "pip_prediction_result.csv")
                 print("Prediction Result Saved to", file_path + "pip_prediction_result.csv")
 
-        return y_pred
+        return result

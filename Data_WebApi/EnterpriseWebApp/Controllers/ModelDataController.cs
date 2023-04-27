@@ -46,7 +46,7 @@ namespace EnterpriseWebApp.Controllers
 
             runDate = runDate == default ? max_runDate : runDate;
 
-            return _dbContext.ModelInputs?.Where(r => r.RunDate == runDate && r.IsTrain == isTrain)?.Select(Extract.ExtractCleanModelInput.Map).Take(5);
+            return _dbContext.ModelInputs?.Where(r => r.RunDate == runDate && r.IsTrain == isTrain)?.Select(Extract.ExtractCleanModelInput.Map);
         }
 
         [HttpPost("SaveCleanModelInput")]
@@ -103,6 +103,8 @@ namespace EnterpriseWebApp.Controllers
                         OnlineBooking = importItem.OnlineBooking,
                         Satisfaction = importItem.Satisfaction,
                         SeatComfort = importItem.SeatComfort,
+                        Class_Eco = importItem.Class_Eco,
+                        TravelType_Personal = importItem.TravelType_Personal,
                         //User_ID = importItem.User_ID,
                         RunDate = runDate
                     };
@@ -140,6 +142,8 @@ namespace EnterpriseWebApp.Controllers
                         OnlineBooking = importItem.OnlineBooking,
                         Satisfaction = importItem.Satisfaction,
                         SeatComfort = importItem.SeatComfort,
+                        Class_Eco = importItem.Class_Eco,
+                        TravelType_Personal = importItem.TravelType_Personal,
                         //User_ID = importItem.User_ID,
                         RunDate = runDate
                     };
@@ -185,7 +189,7 @@ namespace EnterpriseWebApp.Controllers
                     {
                         ID = 0,
                         Data_ID = importItem.Data_ID,
-                        Satisfaction = importItem.Satisfaction,
+                        Satisfaction = importItem.Satisfaction == "0" ? "neutral or dissatisfied": "satisfied",
                         RunDate = runDate
                     };
                 }
@@ -195,7 +199,7 @@ namespace EnterpriseWebApp.Controllers
                     {
                         ID = existingItem.ID,
                         Data_ID = importItem.Data_ID,
-                        Satisfaction = importItem.Satisfaction,
+                        Satisfaction = importItem.Satisfaction == "0" ? "neutral or dissatisfied" : "satisfied",
                         RunDate = runDate
                     };
                 }

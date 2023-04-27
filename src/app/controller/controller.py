@@ -42,13 +42,13 @@ api_router = APIRouter()
 
 
 @api_router.post("/model/train", status_code=200, response_model=object)
-def process_model():
+def process_model_train():
     result = mp.train_model(save_model=True)
     return result
 
 
 @api_router.post("/model/infer_adhoc", status_code=200, response_model=object)
-def process_model(item: list[input_model]):
+def process_model_infer_adhoc(item: list[input_model]):
     column_map = {
     }
 
@@ -59,8 +59,8 @@ def process_model(item: list[input_model]):
 
 
 @api_router.post("/model/infer", status_code=200, response_model=object)
-def process_model():
-    result = mp.predict_results(infer_data_df=None, save_result=False)
+def process_model_infer():
+    result = mp.predict_results(infer_data_df=None, save_result=True)
     return result
 
 
@@ -166,7 +166,9 @@ def process_clean_data():
         "Satisfaction": str,
         "DataDate": str,
         "TravelType_Business": int,
-        "Class_Business" : int
+        "TravelType_Personal": int,
+        "Class_Business" : int,
+        "Class_Eco": int
     }
 
     train_url = "https://localhost:7118/api/etl/AirlineData/GetAirlineData?isTrain=true"
@@ -177,20 +179,21 @@ def process_clean_data():
     dateFormat = "%Y-%m-%dT%H:%M:%S"
     runDate = datetime.now().strftime(dateFormat)
 
-
-    '''dcp.save_results(
-        f"https://localhost:7118/api/etl/ModelData/SaveCleanModelInput?deleteExisting=true&rundate={runDate}",
-        train_imp.rename(columns=payloadColnameMap).astype(columnTypeMap))
-    '''
     test_url = "https://localhost:7118/api/etl/AirlineData/GetAirlineData?isTrain=false"
     test_data_df = dcp.get_training_data(test_url)
     test_data_df = test_data_df.rename(columns=columnNameMap)
     test_norm, test_imp = d_proc.clean_data(test_data_df, is_train=False)
 
     data = pd.concat([train_imp, test_imp], ignore_index=True)
+    data.rename(columns=payloadColnameMap, inplace=True)
+    data.fillna(0, inplace=True)
+    for col in columnTypeMap.keys():
+        if col in data.columns:
+            data[col] = data[col].astype(columnTypeMap[col])
+
     dcp.save_results(
         f"https://localhost:7118/api/etl/ModelData/SaveCleanModelInput?deleteExisting=true&rundate={runDate}",
-        data.rename(columns=payloadColnameMap).astype(columnTypeMap))
+        data)
 
     return "Ok"
     # seq_pc.SequenceProcessor.save_results(results)

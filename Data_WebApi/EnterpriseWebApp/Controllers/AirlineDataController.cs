@@ -38,7 +38,7 @@ namespace EnterpriseWebApp.Controllers
             _logger.LogDebug("Get airline user data");
             var result = default(IEnumerable<AirlineData>);
 
-            return _dbContext.AirlineData.Where(r => r.IsTrain == isTrain)?.Select(Extract.ExtractAirlineData.Map).Take(5);
+            return _dbContext.AirlineData.Where(r => r.IsTrain == isTrain)?.Select(Extract.ExtractAirlineData.Map);
         }
 
     }

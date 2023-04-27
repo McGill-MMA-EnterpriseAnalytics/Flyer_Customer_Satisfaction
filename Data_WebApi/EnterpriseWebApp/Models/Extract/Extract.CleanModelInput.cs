@@ -44,9 +44,18 @@ namespace EnterpriseWebApp.Models.Extract
         [ModelViewColumn(DisplayName = "TravelType_Business", ToDisplay = true)]
         public int TravelType_Business { get; set; }
 
-        [JsonProperty(PropertyName = "Class")]
-        [ModelViewColumn(DisplayName = "Class", ToDisplay = true)]
+        [JsonProperty(PropertyName = "TravelType_Personal")]
+        [ModelViewColumn(DisplayName = "TravelType_Personal", ToDisplay = true)]
+        public int TravelType_Personal { get; set; }
+
+
+        [JsonProperty(PropertyName = "Class_Business")]
+        [ModelViewColumn(DisplayName = "Class_Business", ToDisplay = true)]
         public int Class_Business { get; set; }
+
+        [JsonProperty(PropertyName = "Class_Eco")]
+        [ModelViewColumn(DisplayName = "Class_Eco", ToDisplay = true)]
+        public int Class_Eco { get; set; }
 
         [JsonProperty(PropertyName = "Distance")]
         [ModelViewColumn(DisplayName = "Distance", ToDisplay = true)]
@@ -142,7 +151,7 @@ namespace EnterpriseWebApp.Models.Extract
         public ExtractCleanModelInput(int iD, int airlineDataID, int user_ID, int gender_Female, int gender_Male, int customerType_Loyal, int customerType_Disloyal, int age,
             int travelType_Business, int class_Business, int distance, int inflightWifi, int deptArriveConvenience, int onlineBooking, int gateLocation, int food,
             int onlineBoarding, int seatComfort, int inflightEntertainment, int onboardService, int legRoom, int baggage, int checkin, int inflightService, int cleanliness,
-            int departDelay, int arriveDelay, string satisfaction, DateTime dataDate, bool isTrain, DateTime runDate)
+            int departDelay, int arriveDelay, string satisfaction, DateTime dataDate, bool isTrain, int class_eco, int travelType_personal, DateTime runDate)
         {
             ID = iD;
             AirlineDataID = airlineDataID;
@@ -174,6 +183,8 @@ namespace EnterpriseWebApp.Models.Extract
             Satisfaction = satisfaction;
             DataDate = dataDate;
             IsTrain = isTrain;
+            TravelType_Personal = travelType_personal;
+            Class_Eco = class_eco;
             RunDate = runDate;
         }
 
@@ -209,6 +220,8 @@ namespace EnterpriseWebApp.Models.Extract
             OnlineBooking = item.OnlineBooking,
             Satisfaction = item.Satisfaction,
             SeatComfort = item.SeatComfort,
+            Class_Eco = item.Class_Eco,
+            TravelType_Personal = item.TravelType_Personal,
             //User_ID = item.User_ID
         };
     }

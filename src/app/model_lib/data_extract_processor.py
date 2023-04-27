@@ -54,6 +54,9 @@ class DataExtractProcessor:
 
         if response.status_code == req_status.OK:
             print("ok")
+        else:
+            print(response.reason)
+            return response.reason
 
     @staticmethod
     def get_training_data(request_url: str, params: dict = None):

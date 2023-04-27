@@ -10,8 +10,8 @@ namespace EnterpriseWebApp.Models.Import
         [ModelViewColumn(DisplayName = "Result_ID", ToDisplay = true)]
         public int ID { get; set; }
 
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "AirlineDataID")]
-        [ModelViewColumn(DisplayName = "AirlineDataID", ToDisplay = true)]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "Data_ID")]
+        [ModelViewColumn(DisplayName = "Data_ID", ToDisplay = true)]
         public int Data_ID { get; set; }
 
 
