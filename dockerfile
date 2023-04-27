@@ -20,8 +20,8 @@ WORKDIR /code
 
 COPY ./Data_WebApi/EnterpriseWebApp /code/EnterpriseWebApp
 
-COPY ["EnterpriseWebApp/EnterpriseWebApp.csproj", "EnterpriseWebApp/"]
-RUN dotnet restore "EnterpriseWebApp/EnterpriseWebApp.csproj"
+
+RUN dotnet restore "/code/EnterpriseWebApp/EnterpriseWebApp.csproj"
 COPY . .
 WORKDIR "/code/EnterpriseWebApp"
 
